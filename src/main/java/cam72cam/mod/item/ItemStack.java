@@ -1,12 +1,9 @@
 package cam72cam.mod.item;
 
 import cam72cam.mod.entity.Player;
-import cam72cam.mod.entity.Player.Hand;
 import cam72cam.mod.serialization.TagCompound;
-import cam72cam.mod.world.World;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntityFurnace;
-import net.minecraft.util.ActionResult;
 import net.minecraftforge.fluids.FluidUtil;
 
 /** Wrapper around Minecraft ItemStack (Item, count, NBT) */
@@ -140,9 +137,5 @@ public class ItemStack {
     /** Completely null out the tag compound */
     public void clearTagCompound() {
         internal.setTagCompound(null);
-    }
-
-    public void use(World world, Player player, Hand hand) {
-        internal.useItemRightClick(world.internal, player.internal, hand.internal);
     }
 }

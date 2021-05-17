@@ -21,7 +21,7 @@ public class Mouse {
             // We need to override that distance because train centers are further away
             // than 36m.
 
-            if (Minecraft.getMinecraft().objectMouseOver == null) {
+            if (Minecraft.getMinecraft().objectMouseOver == null || !Minecraft.getMinecraft().player.getHeldItem(button.internal).isEmpty()) {
                 return true;
             }
 
@@ -30,11 +30,7 @@ public class Mouse {
                 new MousePressPacket(button, entity).sendToServer();
                 return false;
             }
-            Entity riding = MinecraftClient.getPlayer().getRiding();
-            if (riding != null && riding.internal instanceof ModdedEntity) {
-                new MousePressPacket(button, riding).sendToServer();
-                return false;
-            }
+
             return true;
         });
     }
